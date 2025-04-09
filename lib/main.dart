@@ -5,6 +5,7 @@ import 'package:flutter_responsive_web/screen/company/company_screen.dart';
 import 'package:flutter_responsive_web/screen/portfolio/portfolio_screen.dart';
 import 'package:flutter_responsive_web/screen/question/question_screen.dart';
 import 'package:flutter_responsive_web/screen/recruit/recruit_screen.dart';
+import 'package:flutter_responsive_web/util/text_util.dart';
 
 void main() {
   runApp(MyApp());
@@ -60,7 +61,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple.shade600),
-        useMaterial3: true
+        useMaterial3: true,
+        fontFamily: "pretendard",
+        textTheme: TextUtil.setTextTheme(),
       ),
       routerDelegate: routerDelegate,
       routeInformationParser: BeamerParser(),
