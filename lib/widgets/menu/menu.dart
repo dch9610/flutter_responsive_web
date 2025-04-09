@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_web/model/screen_model.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/menu_util.dart';
 import 'package:flutter_responsive_web/util/my_color.dart';
@@ -7,13 +8,23 @@ import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
 import 'package:flutter_responsive_web/widgets/menu/menu_tablet_mobile.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({super.key, required this.currentIndex});
+  const Menu({
+    super.key,
+    required this.currentIndex,
+    required this.screenModel,
+  });
   final int currentIndex;
+  final ScreenModel screenModel;
 
   @override
   Widget build(BuildContext context) {
+    if (screenModel.tablet || screenModel.mobile) {
+      return MenuTabletMobile(
+        currentIndex: currentIndex,
+        tablet: screenModel.tablet,
+      );
+    }
 
-    return MenuTabletMobile(currentIndex: currentIndex, tablet: true);
     return SizedBox(
       height: 70,
       width: double.infinity,
@@ -40,9 +51,13 @@ class Menu extends StatelessWidget {
           ...List.generate(MenuUtil.menuList.length, (index) {
             return CustomTextButton(
               label: MenuUtil.menuList[index],
-              textStyle: currentIndex==index 
-              ? TextUtil.get16(context, MyColor.gray90).copyWith(fontWeight: FontWeight.bold)
-              : TextUtil.get16(context, MyColor.gray90),
+              textStyle:
+                  currentIndex == index
+                      ? TextUtil.get16(
+                        context,
+                        MyColor.gray90,
+                      ).copyWith(fontWeight: FontWeight.bold)
+                      : TextUtil.get16(context, MyColor.gray90),
               size: Size(100, 40),
               onPressed: () {
                 MenuUtil.changeIndex(context, index);
