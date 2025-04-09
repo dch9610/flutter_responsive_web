@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/menu_util.dart';
+import 'package:flutter_responsive_web/util/my_color.dart';
+import 'package:flutter_responsive_web/util/text_util.dart';
+import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -29,11 +32,15 @@ class Menu extends StatelessWidget {
           const Spacer(),
 
           ...List.generate(MenuUtil.menuList.length, (index) {
-            return Text(MenuUtil.menuList[index]);
+            return CustomTextButton(
+              label: MenuUtil.menuList[index],
+              textStyle: TextUtil.get16(context, MyColor.gray90),
+              size: Size(100, 40),
+              onPressed: () {},
+            );
           }),
 
-          const SizedBox(width:20),
-
+          const SizedBox(width: 20),
         ],
       ),
     );
