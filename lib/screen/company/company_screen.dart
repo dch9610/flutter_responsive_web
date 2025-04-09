@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_web/widgets/menu/menu.dart';
 
 class CompanyScreen extends StatefulWidget {
   const CompanyScreen({super.key});
@@ -11,7 +12,11 @@ class _CompanyScreenState extends State<CompanyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Company'),
+      body: Column(
+        children: [
+          Menu(),
+        ],
+      ),
     );
   }
 }
