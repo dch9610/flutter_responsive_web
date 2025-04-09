@@ -4,6 +4,7 @@ import 'package:flutter_responsive_web/util/menu_util.dart';
 import 'package:flutter_responsive_web/util/my_color.dart';
 import 'package:flutter_responsive_web/util/text_util.dart';
 import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
+import 'package:flutter_responsive_web/widgets/menu/menu_tablet_mobile.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key, required this.currentIndex});
@@ -11,6 +12,8 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    return MenuTabletMobile(currentIndex: currentIndex, tablet: true);
     return SizedBox(
       height: 70,
       width: double.infinity,
