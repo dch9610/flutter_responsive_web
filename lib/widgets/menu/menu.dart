@@ -6,7 +6,8 @@ import 'package:flutter_responsive_web/util/text_util.dart';
 import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({super.key});
+  const Menu({super.key, required this.currentIndex});
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,9 @@ class Menu extends StatelessWidget {
         children: [
           const SizedBox(width: 20),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              MenuUtil.changeIndex(context, 0);
+            },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             hoverColor: Colors.transparent,
@@ -34,9 +37,13 @@ class Menu extends StatelessWidget {
           ...List.generate(MenuUtil.menuList.length, (index) {
             return CustomTextButton(
               label: MenuUtil.menuList[index],
-              textStyle: TextUtil.get16(context, MyColor.gray90),
+              textStyle: currentIndex==index 
+              ? TextUtil.get16(context, MyColor.gray90).copyWith(fontWeight: FontWeight.bold)
+              : TextUtil.get16(context, MyColor.gray90),
               size: Size(100, 40),
-              onPressed: () {},
+              onPressed: () {
+                MenuUtil.changeIndex(context, index);
+              },
             );
           }),
 
