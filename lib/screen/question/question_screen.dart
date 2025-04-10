@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_web/screen/question/widgets/question_subtitle.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
 import 'package:flutter_responsive_web/widgets/footer.dart';
@@ -30,6 +31,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
               backgroundImage: AssetPath.questionHeaderImage,
               screenModel: screenModel,
             ),
+            QuestionSubtitle(screenModel: screenModel),
           ],
         );
 
