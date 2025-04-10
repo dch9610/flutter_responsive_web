@@ -37,7 +37,9 @@ class MenuTabletMobile extends StatelessWidget {
           ),
 
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Scaffold.of(context).openEndDrawer();
+            },
             child: Padding(
               padding: EdgeInsets.all(tablet ? 20 : 16),
               child: Image.asset(AssetPath.hamburger, width: 20, height: 20),
