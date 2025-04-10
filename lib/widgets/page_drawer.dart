@@ -26,7 +26,7 @@ class PageDrawer extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: InkWell(
               onTap: () {
-                Scaffold.of(context).closeDrawer();
+                Scaffold.of(context).closeEndDrawer();
               },
               customBorder: CircleBorder(),
               child: const Padding(
