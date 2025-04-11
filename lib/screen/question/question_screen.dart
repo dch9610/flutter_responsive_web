@@ -3,6 +3,7 @@ import 'package:flutter_responsive_web/screen/question/widgets/question_subtitle
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
 import 'package:flutter_responsive_web/widgets/custom_dropdown_button.dart';
+import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
 import 'package:flutter_responsive_web/widgets/footer.dart';
 import 'package:flutter_responsive_web/widgets/header.dart';
 import 'package:flutter_responsive_web/widgets/menu/menu.dart';
@@ -45,6 +46,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   selectedIndex = index;
                 });
               },
+            ),
+            CustomTextFormField(
+              controller: TextEditingController(),
+              textInputType: TextInputType.text,
+              hintText: '이메일을 입력해주세요.',
             ),
           ],
         );
