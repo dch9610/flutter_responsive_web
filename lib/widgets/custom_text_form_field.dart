@@ -7,11 +7,12 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines = 1,
     required this.controller,
     required this.textInputType,
+    required this.hintText,
     this.textInputAction = TextInputAction.next,
     this.fontSize = 15,
     this.textHeight = 1,
     this.onFieldSubmitted,
-    required this.hintText,
+    this.verticalPadding = 15,
   });
 
   final int maxLines;
@@ -23,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String value)? onFieldSubmitted;
 
   final String hintText;
+  final double verticalPadding; 
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class CustomTextFormField extends StatelessWidget {
           color: Colors.grey,
           fontWeight: FontWeight.w500,
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: verticalPadding),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.zero,
           borderSide: BorderSide(width: 1, color: Colors.grey.withOpacity(0.5)),

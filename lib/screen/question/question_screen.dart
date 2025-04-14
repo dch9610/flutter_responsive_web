@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_subtitle.dart';
+import 'package:flutter_responsive_web/screen/question/widgets/question_web.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_widgets.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
+import 'package:flutter_responsive_web/util/question_util.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
 import 'package:flutter_responsive_web/widgets/custom_dropdown_button.dart';
 import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
@@ -22,6 +24,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
   int selectedIndex = 0;
 
   @override
+  void initState(){
+    QuestionUtil().initData();
+    super.initState();
+
+  }
+
+  @override
+  void dispose() {
+    QuestionUtil().dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScreenLayoutBuilder(
       myBuilder: (screenModel, web, tablet, mobile) {
@@ -37,33 +52,35 @@ class _QuestionScreenState extends State<QuestionScreen> {
               screenModel: screenModel,
             ),
             QuestionSubtitle(screenModel: screenModel),
-            QuestionWidgets.dropdownBox(
-              context: context,
-              web: web,
-              label: '프로젝트 / 서비스 선택 *',
-              labelList: ['앱', '웹', '서비스', '협의'],
-              selectedIndex: selectedIndex,
-              onChanged: (index) {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-            ),
+            QuestionWeb(),
 
-            QuestionWidgets.formFieldBox(
-              context: context,
-              web: web,
-              label: '문의 제목*',
-              controller: TextEditingController(),
-              textInputType: TextInputType.text,
-              hintText: '문의 제목을 입력해주세요.',
-            ),
+            // QuestionWidgets.dropdownBox(
+            //   context: context,
+            //   web: web,
+            //   label: '프로젝트 / 서비스 선택 *',
+            //   labelList: ['앱', '웹', '서비스', '협의'],
+            //   selectedIndex: selectedIndex,
+            //   onChanged: (index) {
+            //     setState(() {
+            //       selectedIndex = index;
+            //     });
+            //   },
+            // ),
 
-            CustomTextFormField(
-              controller: TextEditingController(),
-              textInputType: TextInputType.text,
-              hintText: '이메일을 입력해주세요.',
-            ),
+            // QuestionWidgets.formFieldBox(
+            //   context: context,
+            //   web: web,
+            //   label: '문의 제목*',
+            //   controller: TextEditingController(),
+            //   textInputType: TextInputType.text,
+            //   hintText: '문의 제목을 입력해주세요.',
+            // ),
+
+            // CustomTextFormField(
+            //   controller: TextEditingController(),
+            //   textInputType: TextInputType.text,
+            //   hintText: '이메일을 입력해주세요.',
+            // ),
           ],
         );
 

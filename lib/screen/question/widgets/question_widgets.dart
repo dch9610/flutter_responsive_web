@@ -56,10 +56,14 @@ class QuestionWidgets {
       children: [
         contentTitle(context, web, label),
         const SizedBox(height: 4),
-        CustomTextFormField(
-          controller: controller,
-          textInputType: textInputType,
-          hintText: hintText,
+        SizedBox(
+          height: web ? 56 : 48,
+          child: CustomTextFormField(
+            verticalPadding: 25,
+            controller: controller,
+            textInputType: textInputType,
+            hintText: hintText,
+          ),
         ),
       ],
     );
