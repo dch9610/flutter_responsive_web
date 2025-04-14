@@ -4,6 +4,7 @@ import 'package:flutter_responsive_web/screen/question/widgets/question_web.dart
 import 'package:flutter_responsive_web/screen/question/widgets/question_widgets.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/question_util.dart';
+import 'package:flutter_responsive_web/util/screen_padding.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
 import 'package:flutter_responsive_web/widgets/custom_dropdown_button.dart';
 import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
@@ -40,9 +41,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Widget build(BuildContext context) {
     return ScreenLayoutBuilder(
       myBuilder: (screenModel, web, tablet, mobile) {
+        var scrennWidth = MediaQuery.of(context).size.width; // 현재 창에 가로사이즈
         return CommonScaffold(
           currentIndex: 3,
           screenModel: screenModel,
+          horizontalPadding: ScreenPadding.get(web, scrennWidth),
           black: false,
           childern: [
             Header(
@@ -51,8 +54,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
               backgroundImage: AssetPath.questionHeaderImage,
               screenModel: screenModel,
             ),
-            // QuestionSubtitle(screenModel: screenModel),
-            // QuestionWeb(),
+            QuestionSubtitle(screenModel: screenModel),
+            QuestionWeb(),
           ],
         );
 

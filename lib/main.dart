@@ -6,6 +6,7 @@ import 'package:flutter_responsive_web/screen/portfolio/portfolio_screen.dart';
 import 'package:flutter_responsive_web/screen/question/question_screen.dart';
 import 'package:flutter_responsive_web/screen/recruit/recruit_screen.dart';
 import 'package:flutter_responsive_web/util/text_util.dart';
+import 'package:flutter_responsive_web/widgets/custom_constraints.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,34 +23,39 @@ class MyApp extends StatelessWidget {
     initialPath: RoutePage.company,
     notFoundRedirectNamed: RoutePage.company,
 
-    locationBuilder: RoutesLocationBuilder(
-      routes:{
-        RoutePage.company: (context, state, data){
-          return const BeamPage(
-            key : ValueKey("company"),
-            title:'Company',
-            child: CompanyScreen());
-        },
-        RoutePage.portfolio: (context, state, data){
-          return const BeamPage(
-            key : ValueKey("portfolio"),
-            title:'Portfolio',
-            child: PortfolioScreen());
-        },
-        RoutePage.recruit: (context, state, data){
-          return const BeamPage(
-            key : ValueKey("recruit"),
-            title:'Recruit',
-            child: RecruitScreen());
-        },
-        RoutePage.question: (context, state, data){
-          return const BeamPage(
-            key : ValueKey("question"),
-            title:'Question',
-            child: QuestionScreen());
-        }
-      }
-    ).call,
+    locationBuilder:
+        RoutesLocationBuilder(
+          routes: {
+            RoutePage.company: (context, state, data) {
+              return const BeamPage(
+                key: ValueKey("company"),
+                title: 'Company',
+                child: CompanyScreen(),
+              );
+            },
+            RoutePage.portfolio: (context, state, data) {
+              return const BeamPage(
+                key: ValueKey("portfolio"),
+                title: 'Portfolio',
+                child: PortfolioScreen(),
+              );
+            },
+            RoutePage.recruit: (context, state, data) {
+              return const BeamPage(
+                key: ValueKey("recruit"),
+                title: 'Recruit',
+                child: RecruitScreen(),
+              );
+            },
+            RoutePage.question: (context, state, data) {
+              return const BeamPage(
+                key: ValueKey("question"),
+                title: 'Question',
+                child: QuestionScreen(),
+              );
+            },
+          },
+        ).call,
   );
 
   // This widget is the root of your application.
@@ -58,6 +64,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: "HomePage",
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return CustomConstraints(
+          backgroundColor: Colors.white,
+          child: child!,
+          maxWidth: 1920,
+        );
+      },
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple.shade600),
@@ -67,9 +80,9 @@ class MyApp extends StatelessWidget {
       ),
       routerDelegate: routerDelegate,
       routeInformationParser: BeamerParser(),
-      backButtonDispatcher: BeamerBackButtonDispatcher(delegate: routerDelegate),
+      backButtonDispatcher: BeamerBackButtonDispatcher(
+        delegate: routerDelegate,
+      ),
     );
-
-    
   }
 }
