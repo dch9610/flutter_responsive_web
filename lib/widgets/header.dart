@@ -9,7 +9,6 @@ class Header extends StatelessWidget {
     required this.subTitle,
     required this.backgroundImage,
     required this.screenModel,
-    
   });
 
   final String title;
@@ -19,42 +18,54 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: setHeight(),
-      decoration:
-          backgroundImage.isEmpty
-              ? null
-              : BoxDecoration(
-                image: DecorationImage(
-                  image: Image.asset(backgroundImage).image,
-                  fit: BoxFit.cover,
+    var height = setHeight();
+    var width = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: width,
+      height: height,
+      child: OverflowBox(
+        maxHeight: height,
+        maxWidth: width,
+        child: Container(
+          width: width,
+          height: height,
+          // width: double.infinity,
+          // height: setHeight(),
+          decoration:
+              backgroundImage.isEmpty
+                  ? null
+                  : BoxDecoration(
+                    image: DecorationImage(
+                      image: Image.asset(backgroundImage).image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+          child: Column(
+            children: [
+              SizedBox(height: topPadding()),
+              if (title.isNotEmpty) ...[
+                Text(
+                  title,
+                  style: TextUtil.get20(context, Colors.white).copyWith(
+                    fontWeight: titleFontWeight(),
+                    fontSize: titleFontSize(),
+                  ),
                 ),
-              ),
-      child: Column(
-        children: [
-          SizedBox(height: topPadding()),
-          if (title.isNotEmpty) ...[
-            Text(
-              title,
-              style: TextUtil.get20(context, Colors.white).copyWith(
-                fontWeight: titleFontWeight(),
-                fontSize: titleFontSize(),
-              ),
-            ),
-          ],
+              ],
 
-          if (subTitle.isNotEmpty) ...[
-            SizedBox(height: 14,),
-            Text(
-              subTitle,
-              style: TextUtil.get20(context, Colors.white).copyWith(
-                fontWeight: subTitleFontWeight(),
-                fontSize: subTitleFontSize(),
-              ),
-            ),
-          ],
-        ],
+              if (subTitle.isNotEmpty) ...[
+                SizedBox(height: 14),
+                Text(
+                  subTitle,
+                  style: TextUtil.get20(context, Colors.white).copyWith(
+                    fontWeight: subTitleFontWeight(),
+                    fontSize: subTitleFontSize(),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
