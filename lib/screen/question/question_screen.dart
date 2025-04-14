@@ -51,36 +51,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
               backgroundImage: AssetPath.questionHeaderImage,
               screenModel: screenModel,
             ),
-            QuestionSubtitle(screenModel: screenModel),
-            QuestionWeb(),
-
-            // QuestionWidgets.dropdownBox(
-            //   context: context,
-            //   web: web,
-            //   label: '프로젝트 / 서비스 선택 *',
-            //   labelList: ['앱', '웹', '서비스', '협의'],
-            //   selectedIndex: selectedIndex,
-            //   onChanged: (index) {
-            //     setState(() {
-            //       selectedIndex = index;
-            //     });
-            //   },
-            // ),
-
-            // QuestionWidgets.formFieldBox(
-            //   context: context,
-            //   web: web,
-            //   label: '문의 제목*',
-            //   controller: TextEditingController(),
-            //   textInputType: TextInputType.text,
-            //   hintText: '문의 제목을 입력해주세요.',
-            // ),
-
-            // CustomTextFormField(
-            //   controller: TextEditingController(),
-            //   textInputType: TextInputType.text,
-            //   hintText: '이메일을 입력해주세요.',
-            // ),
+            // QuestionSubtitle(screenModel: screenModel),
+            // QuestionWeb(),
           ],
         );
 

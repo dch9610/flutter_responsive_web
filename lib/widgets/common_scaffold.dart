@@ -9,7 +9,7 @@ class CommonScaffold extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.screenModel,
-    required this.childern, 
+    required this.childern,
     this.black = true,
   });
 
@@ -36,7 +36,11 @@ class CommonScaffold extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: Menu(currentIndex: currentIndex, screenModel: screenModel, black: black,),
+            child: Menu(
+              currentIndex: currentIndex,
+              screenModel: screenModel,
+              black: black,
+            ),
           ),
         ],
       ),
