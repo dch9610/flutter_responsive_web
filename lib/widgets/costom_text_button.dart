@@ -9,7 +9,7 @@ class CustomTextButton extends StatelessWidget {
     required this.onPressed,
     this.padding = EdgeInsets.zero,
     this.radius = 10,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor = Colors.transparent,
   });
 
   final String label;
