@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_subtitle.dart';
+import 'package:flutter_responsive_web/screen/question/widgets/question_widgets.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
 import 'package:flutter_responsive_web/widgets/custom_dropdown_button.dart';
@@ -36,10 +37,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
               screenModel: screenModel,
             ),
             QuestionSubtitle(screenModel: screenModel),
-            CustomDropdownButton(
-              labelList: ["앱", "웹", '서비스', '협의'],
-              height: 50,
+            QuestionWidgets.dropdownBox(
+              context: context,
               web: web,
+              label: '프로젝트 / 서비스 선택 *',
+              labelList: ['앱', '웹', '서비스', '협의'],
               selectedIndex: selectedIndex,
               onChanged: (index) {
                 setState(() {
@@ -47,6 +49,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 });
               },
             ),
+
+            QuestionWidgets.formFieldBox(
+              context: context,
+              web: web,
+              label: '문의 제목*',
+              controller: TextEditingController(),
+              textInputType: TextInputType.text,
+              hintText: '문의 제목을 입력해주세요.',
+            ),
+
             CustomTextFormField(
               controller: TextEditingController(),
               textInputType: TextInputType.text,

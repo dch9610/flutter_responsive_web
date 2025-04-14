@@ -20,9 +20,12 @@ class CustomDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: height,
       width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color:Colors.grey.withOpacity(0.5)),
+      ),
       child: Stack(
         children: [
           Positioned.fill(
