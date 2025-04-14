@@ -13,8 +13,10 @@ class QuestionUtil {
   var contentController = TextEditingController();
 
   int questionTypeIndex = 0;
+  int questionPriceIndex = 0;
 
   void changeQuestionType(int index) => questionTypeIndex = index;
+  void changeQuestionPrice(int index) => questionPriceIndex = index;
 
   void initData() {
     titleController = TextEditingController();

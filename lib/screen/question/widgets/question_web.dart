@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_widgets.dart';
+import 'package:flutter_responsive_web/util/my_color.dart';
 import 'package:flutter_responsive_web/util/question_util.dart';
+import 'package:flutter_responsive_web/util/text_util.dart';
+import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
+import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
 
 class QuestionWeb extends StatelessWidget {
   const QuestionWeb({super.key});
@@ -64,15 +68,43 @@ class QuestionWeb extends StatelessWidget {
                 hintText: '회신 받을 이메일을 남겨주세요.',
               ),
             ),
-            SizedBox(height: 25),
-            // QuestionWidgets.formFieldBox(
-            //   context: context,
-            //   web: true,
-            //   label: label,
-            //   controller: controller,
-            //   textInputType: textInputType,
-            //   hintText: hintText,
-            // ),
+          ],
+        ),
+        SizedBox(height: 25),
+        QuestionWidgets.contentBox(context, true, qUtil.contentController),
+        SizedBox(height: 25),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+              child: QuestionWidgets.dropdownBox(
+                context: context,
+                web: true,
+                label: '예산',
+                labelList: [
+                  '협의',
+                  '1000만원',
+                  '2000만원',
+                  '3000만원',
+                  '4000만원',
+                  '5000만원',
+                ],
+                selectedIndex: qUtil.questionPriceIndex,
+                onChanged: (index) {
+                  qUtil.changeQuestionPrice(index);
+                },
+              ),
+            ),
+            Spacer(),
+            CustomTextButton(
+              label: '문의하기',
+              textStyle: TextUtil.get16(context, Colors.white),
+              size: Size(190,56),
+              backgroundColor: MyColor.blue50,
+              onPressed: (){
+
+              },
+            ),
           ],
         ),
       ],

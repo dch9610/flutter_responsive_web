@@ -68,4 +68,24 @@ class QuestionWidgets {
       ],
     );
   }
+
+  static Widget contentBox(BuildContext context, bool web, TextEditingController controller){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        QuestionWidgets.contentTitle(context, web, '문의 내용 *'),
+        SizedBox(height: 4),
+        CustomTextFormField(
+          controller: controller,
+          textInputType: TextInputType.multiline,
+          hintText: "문의 내용을 적어주세요."
+                    "\n - 서비스 구축/이용목적"
+                    "\n - 원하는 기능"
+                    "\n - 상세 설명",
+          maxLines: 12,
+          textHeight: 1.5,
+        ),
+      ],
+    );
+  }
 }

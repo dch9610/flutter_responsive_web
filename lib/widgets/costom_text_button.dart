@@ -9,6 +9,7 @@ class CustomTextButton extends StatelessWidget {
     required this.onPressed,
     this.padding = EdgeInsets.zero,
     this.radius = 10,
+    this.backgroundColor = Colors.white,
   });
 
   final String label;
@@ -16,6 +17,7 @@ class CustomTextButton extends StatelessWidget {
   final Size size;
   final EdgeInsetsGeometry padding;
   final double radius;
+  final Color backgroundColor;
   final VoidCallback? onPressed;
 
   @override
@@ -27,6 +29,7 @@ class CustomTextButton extends StatelessWidget {
         maximumSize: size,
         fixedSize: size,
         padding: padding,
+        backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius),
         ),
