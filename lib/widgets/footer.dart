@@ -9,24 +9,34 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 250,
-      color: MyColor.gray10,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ...List.generate(MenuUtil.menuList.length, (index) {
-            return CustomTextButton(
-              label: MenuUtil.menuList[index],
-              textStyle: TextUtil.get15(context, MyColor.gray80),
-              size: Size(110, 36),
-              onPressed: () {
-                MenuUtil.changeIndex(context, index);
-              },
-            );
-          }),
-        ],
+    double height = 250;
+    var width = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: width,
+      height: height,
+      child: OverflowBox(
+        maxWidth: width,
+        maxHeight: height,
+        child: Container(
+          width: width,
+          height: height,
+          color: MyColor.gray10,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...List.generate(MenuUtil.menuList.length, (index) {
+                return CustomTextButton(
+                  label: MenuUtil.menuList[index],
+                  textStyle: TextUtil.get15(context, MyColor.gray80),
+                  size: Size(110, 36),
+                  onPressed: () {
+                    MenuUtil.changeIndex(context, index);
+                  },
+                );
+              }),
+            ],
+          ),
+        ),
       ),
     );
   }

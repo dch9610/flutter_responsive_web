@@ -56,6 +56,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             ),
             QuestionSubtitle(screenModel: screenModel),
             QuestionWeb(),
+            SizedBox(height: 30,),
           ],
         );
 
