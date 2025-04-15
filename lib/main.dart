@@ -68,8 +68,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return CustomConstraints(
           backgroundColor: Colors.white,
-          child: child!,
           maxWidth: 1920,
+          child: child!,
         );
       },
       theme: ThemeData(

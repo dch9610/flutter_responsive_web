@@ -24,7 +24,7 @@ class CustomDropdownButton extends StatelessWidget {
       height: height,
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color:Colors.grey.withOpacity(0.5)),
+        border: Border.all(width: 1, color:Colors.grey.withAlpha(128)),
       ),
       child: Stack(
         children: [

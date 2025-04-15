@@ -57,7 +57,7 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: verticalPadding),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.zero,
-          borderSide: BorderSide(width: 1, color: Colors.grey.withOpacity(0.5)),
+          borderSide: BorderSide(width: 1, color: Colors.grey.withAlpha(128)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.zero,
