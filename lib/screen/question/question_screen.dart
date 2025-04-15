@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_subtitle.dart';
+import 'package:flutter_responsive_web/screen/question/widgets/question_tablet_mobile.dart';
 import 'package:flutter_responsive_web/screen/question/widgets/question_web.dart';
-import 'package:flutter_responsive_web/screen/question/widgets/question_widgets.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/question_util.dart';
 import 'package:flutter_responsive_web/util/screen_padding.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
-import 'package:flutter_responsive_web/widgets/custom_dropdown_button.dart';
-import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
-import 'package:flutter_responsive_web/widgets/footer.dart';
 import 'package:flutter_responsive_web/widgets/header.dart';
-import 'package:flutter_responsive_web/widgets/menu/menu.dart';
-import 'package:flutter_responsive_web/widgets/page_drawer.dart';
 import 'package:flutter_responsive_web/widgets/screen_layout_builder.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -26,7 +21,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   late VoidCallback listener = () {
     setState(() {});
-    print('listner');
   };
 
   @override
@@ -64,7 +58,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
               screenModel: screenModel,
             ),
             QuestionSubtitle(screenModel: screenModel),
-            QuestionWeb(),
+
+            // 웹인 경우 QuestionWeb 함수를 리스트로 적용
+            // 사이즈가 변경될때마다 빌드하지만 question_util에 Singleton으로 값을 넣어놨기 때문에
+            // 데이터 변경은 없음
+            if (web) ...[QuestionWeb()] else ...[QuestionTabletMobile()],
           ],
         );
 
