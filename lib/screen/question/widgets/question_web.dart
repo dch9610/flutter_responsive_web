@@ -4,15 +4,18 @@ import 'package:flutter_responsive_web/util/my_color.dart';
 import 'package:flutter_responsive_web/util/question_util.dart';
 import 'package:flutter_responsive_web/util/text_util.dart';
 import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
-import 'package:flutter_responsive_web/widgets/custom_text_form_field.dart';
 
-class QuestionWeb extends StatelessWidget {
+class QuestionWeb extends StatefulWidget {
   const QuestionWeb({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final qUtil = QuestionUtil();
+  State<QuestionWeb> createState() => _QuestionWebState();
+}
 
+class _QuestionWebState extends State<QuestionWeb> {
+  final qUtil = QuestionUtil();
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: 40),
@@ -27,6 +30,7 @@ class QuestionWeb extends StatelessWidget {
                 selectedIndex: qUtil.questionTypeIndex,
                 onChanged: (index) {
                   qUtil.changeQuestionType(index);
+                  setState(() {});
                 },
               ),
             ),
@@ -92,6 +96,7 @@ class QuestionWeb extends StatelessWidget {
                 selectedIndex: qUtil.questionPriceIndex,
                 onChanged: (index) {
                   qUtil.changeQuestionPrice(index);
+                  setState(() {});
                 },
               ),
             ),
@@ -99,14 +104,13 @@ class QuestionWeb extends StatelessWidget {
             CustomTextButton(
               label: '문의하기',
               textStyle: TextUtil.get16(context, Colors.white),
-              size: Size(190,56),
-              backgroundColor: MyColor.blue50,
-              onPressed: (){
-
-              },
+              size: Size(190, 56),
+              backgroundColor: MyColor.blue40,
+              onPressed: !qUtil.checkValidation() ? null : () {},
             ),
           ],
         ),
+        SizedBox(height: 100),
       ],
     );
   }

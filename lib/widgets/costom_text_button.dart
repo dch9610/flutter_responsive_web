@@ -29,7 +29,7 @@ class CustomTextButton extends StatelessWidget {
         maximumSize: size,
         fixedSize: size,
         padding: padding,
-        backgroundColor: backgroundColor,
+        backgroundColor: onPressed == null ? null : backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius),
         ),
