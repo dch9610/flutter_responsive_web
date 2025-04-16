@@ -11,7 +11,7 @@ class Menu extends StatelessWidget {
   const Menu({
     super.key,
     required this.currentIndex,
-    required this.screenModel, 
+    required this.screenModel,
     this.black = true,
   });
   final int currentIndex;
@@ -59,7 +59,10 @@ class Menu extends StatelessWidget {
                         context,
                         black ? MyColor.gray90 : Colors.white,
                       ).copyWith(fontWeight: FontWeight.bold)
-                      : TextUtil.get15(context, black ? MyColor.gray90 : Colors.white,).copyWith(fontWeight: FontWeight.w400),
+                      : TextUtil.get15(
+                        context,
+                        black ? MyColor.gray90 : Colors.white,
+                      ).copyWith(fontWeight: FontWeight.w400),
               size: Size(100, 40),
               onPressed: () {
                 MenuUtil.changeIndex(context, index);

@@ -9,20 +9,20 @@ class CommonScaffold extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.screenModel,
-    required this.childern,
+    required this.children,
     this.black = true,
     this.horizontalPadding = 0,
   });
 
   final int currentIndex;
   final ScreenModel screenModel;
-  final List<Widget> childern;
+  final List<Widget> children;
   final bool black;
   final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
-    childern.add(const Footer());
+    children.add(const Footer());
     return Scaffold(
       endDrawer: PageDrawer(
         currentIndex: currentIndex,
@@ -33,7 +33,7 @@ class CommonScaffold extends StatelessWidget {
           Positioned.fill(
             child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: Column(children: childern),
+              child: Column(children: children),
             ),
           ),
 

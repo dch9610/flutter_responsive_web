@@ -9,7 +9,7 @@ typedef MyBuilder =
       bool mobile,
     );
 
-const double _tabletWidth = 1024;
+const double _tabletWidth = 900;
 const double _mobileWidth = 768;
 
 class ScreenLayoutBuilder extends StatelessWidget {
