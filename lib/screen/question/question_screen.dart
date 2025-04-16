@@ -50,7 +50,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           screenModel: screenModel,
           horizontalPadding: ScreenPadding.get(web, scrennWidth),
           black: false,
-          childern: [
+          children: [
             Header(
               title: '온라인 문의',
               subTitle: '프로젝트 및 서비스 문의를 남겨주세요.',
