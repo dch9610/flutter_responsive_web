@@ -11,5 +11,7 @@ class AssetPath{
   static const office = "assets/images/office.jpg";
   static const office_2 = "assets/images/office_2.jpg";
   
+  static const detail1 = "assets/images/detail_1.jpg";
+  static const detail2 = "assets/images/detail_2.jpg";
 
 }

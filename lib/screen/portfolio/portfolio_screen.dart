@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_web/route_page.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/my_color.dart';
 import 'package:flutter_responsive_web/util/screen_padding.dart';
@@ -14,6 +15,14 @@ class PortfolioScreen extends StatefulWidget {
 }
 
 class _PortfolioScreenState extends State<PortfolioScreen> {
+  List<String> imageList = [
+    AssetPath.bird,
+    AssetPath.butterfly,
+    AssetPath.flutter,
+    AssetPath.office,
+    AssetPath.office_2,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ScreenLayoutBuilder(
@@ -57,22 +66,24 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               ),
             ),
 
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
             GridView.count(
               physics:
                   const NeverScrollableScrollPhysics(), // GridView Scroll 비활성화
               crossAxisCount: web ? 2 : 1,
               shrinkWrap: true,
               childAspectRatio: 1, // 가로,세로 비율 변경
-              children: [
-                Image.asset(AssetPath.bird, fit: BoxFit.cover),
-                Image.asset(AssetPath.butterfly, fit: BoxFit.cover),
-                Image.asset(AssetPath.flutter, fit: BoxFit.cover),
-                Image.asset(AssetPath.office, fit: BoxFit.cover),
-                Image.asset(AssetPath.office_2, fit: BoxFit.cover),
-              ],
+              // 이미지 클릭 시 Detail Page로 이동
+              children: List.generate(imageList.length, (index) {
+                return InkWell(
+                  onTap: () {
+                    RoutePage.movePage(context, RoutePage.portfolioDetail);
+                  },
+                  child: Image.asset(imageList[index], fit: BoxFit.cover),
+                );
+              }),
             ),
-            SizedBox(height: 150,),
+            SizedBox(height: 150),
           ],
         );
       },
