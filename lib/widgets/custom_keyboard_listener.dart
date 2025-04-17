@@ -47,7 +47,6 @@ class _CustomKeyboardListenerState extends State<CustomKeyboardListener> {
             end();
           }
         }
-        print('event : $event');
       },
       child: widget.child,
     );

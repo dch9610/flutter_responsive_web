@@ -10,6 +10,7 @@ class Header extends StatelessWidget {
     required this.backgroundImage,
     required this.screenModel,
     this.titleColor = Colors.white,
+    this.subTitleColor = Colors.white,
   });
 
   final String title;
@@ -18,6 +19,7 @@ class Header extends StatelessWidget {
   final ScreenModel screenModel;
 
   final Color titleColor;
+  final Color subTitleColor;
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +63,11 @@ class Header extends StatelessWidget {
                 SizedBox(height: 14),
                 Text(
                   subTitle,
-                  style: TextUtil.get20(context, Colors.white).copyWith(
+                  style: TextUtil.get20(context, subTitleColor).copyWith(
                     fontWeight: subTitleFontWeight(),
                     fontSize: subTitleFontSize(),
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ],
