@@ -14,6 +14,17 @@ class PortfolioDetailScreen extends StatefulWidget {
 }
 
 class _PortfolioDetailScreenState extends State<PortfolioDetailScreen> {
+  final pageController = PageController();
+  int currentIndex = 0;
+
+  // 위젯이 화면에서 사라질 때 호출되는 함수
+  // Controller는 내부에 리소스를 가지고 있으므로 사용이 끝났을 때 꼭 dispose()로 정리
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // Padding을 넣기 위함 (ScreenLayoutBuilder)
@@ -21,7 +32,9 @@ class _PortfolioDetailScreenState extends State<PortfolioDetailScreen> {
       myBuilder: (screenModel, web, tablet, mobile) {
         var screenWidth = MediaQuery.of(context).size.width;
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: ScreenPadding.get(web, screenWidth)),
+          padding: EdgeInsets.symmetric(
+            horizontal: ScreenPadding.get(web, screenWidth),
+          ),
           child: Scaffold(
             body: Column(
               children: [
@@ -47,12 +60,88 @@ class _PortfolioDetailScreenState extends State<PortfolioDetailScreen> {
                     ],
                   ),
                 ),
-          
+
                 Expanded(
-                  child: PageView(
+                  child: Stack(
                     children: [
-                      Image.asset(AssetPath.detail1, fit: BoxFit.cover),
-                      Image.asset(AssetPath.detail2, fit: BoxFit.cover),
+                      Positioned.fill(
+                        child: PageView(
+                          controller: pageController,
+                          onPageChanged: (value) {
+                            currentIndex = value;
+                            setState(() {});
+                          },
+                          children: [
+                            Image.asset(AssetPath.detail1, fit: BoxFit.cover),
+                            Image.asset(AssetPath.detail2, fit: BoxFit.cover),
+                          ],
+                        ),
+                      ),
+
+                      if (currentIndex != 0) ...[
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          child: Column(
+                            mainAxisAlignment:
+                                MainAxisAlignment
+                                    .center, // center를 주지않으면 왼쪽 클릭만 해도 onTap 실행
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  currentIndex--;
+                                  pageController.animateToPage(
+                                    currentIndex,
+                                    duration: Duration(milliseconds: 200),
+                                    curve: Curves.easeInOut,
+                                  );
+                                  print("left click");
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_left_rounded,
+                                    size: 40,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      if (currentIndex != 1) ...[
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          bottom: 0,
+                          child: Column(
+                            mainAxisAlignment:
+                                MainAxisAlignment
+                                    .center, // center를 주지않으면 왼쪽 클릭만 해도 onTap 실행
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  currentIndex++;
+                                  pageController.animateToPage(
+                                    currentIndex,
+                                    duration: Duration(milliseconds: 200),
+                                    curve: Curves.easeInOut,
+                                  );
+                                  print("right click");
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_right_rounded,
+                                    size: 40,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),
