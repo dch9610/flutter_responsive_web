@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_web/util/asset_path.dart';
 import 'package:flutter_responsive_web/util/my_color.dart';
 import 'package:flutter_responsive_web/util/text_util.dart';
+import 'package:flutter_responsive_web/widgets/costom_text_button.dart';
 
 class RecruitCard extends StatelessWidget {
   const RecruitCard({
@@ -28,6 +29,7 @@ class RecruitCard extends StatelessWidget {
         ],
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(AssetPath.tagImage, width: 56, height: 56),
@@ -67,7 +69,10 @@ class RecruitCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              item(context, "우대사항"),
+              Padding(
+                padding: const EdgeInsets.only(top: 7),
+                child: item(context, "우대사항"),
+              ),
               const SizedBox(width: 16),
               Expanded(
                 child: Wrap(
@@ -79,6 +84,14 @@ class RecruitCard extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 48),
+          CustomTextButton(
+            label: "채용 준비 중",
+            textStyle: TextUtil.get16(context, MyColor.gray20),
+            size: Size(double.infinity, 56),
+            radius: 0,
+            onPressed: null,
           ),
         ],
       ),
@@ -93,7 +106,7 @@ class RecruitCard extends StatelessWidget {
     return Chip(
       label: Text(label, style: TextUtil.get14(context, MyColor.gray80)),
       backgroundColor: MyColor.gray10,
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.all(10),
       side: null,
       // 긴쪽을 라운딩 처리리
       shape: StadiumBorder(side: BorderSide(color: Colors.transparent)),
