@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_web/screen/company/widgets/company_mind.dart';
 import 'package:flutter_responsive_web/screen/company/widgets/company_slogan.dart';
 import 'package:flutter_responsive_web/util/screen_padding.dart';
 import 'package:flutter_responsive_web/widgets/common_scaffold.dart';
@@ -31,7 +32,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
               titleColor: Colors.black,
               subTitleColor: Colors.black,
             ),
-            CompanySlogan(web:web),
+            CompanySlogan(web: web),
+            const SizedBox(height: 200),
+            CompanyMind(screenModel: screenModel),
+            const SizedBox(height: 150),
           ],
         );
       },
