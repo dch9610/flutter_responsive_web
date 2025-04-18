@@ -47,8 +47,10 @@ class _PortfolioDetailScreenState extends State<PortfolioDetailScreen> {
                         style: TextUtil.get20(context, Colors.black),
                       ),
                       const Spacer(),
+
                       InkWell(
                         onTap: () {
+                          print('Tapped!');
                           RoutePage.backPage(context);
                         },
                         customBorder: const CircleBorder(),
@@ -110,6 +112,8 @@ class _PortfolioDetailScreenState extends State<PortfolioDetailScreen> {
                           ),
                         ),
                       ],
+
+                      
                       if (currentIndex != 1) ...[
                         Positioned(
                           right: 0,
